@@ -1,3 +1,4 @@
+import os
 import pygame
 from pygame import Vector2, Surface, Rect
 from pygame import transform
@@ -18,13 +19,13 @@ screen = pygame.display.set_mode(PIXEL_SIZE * 4 + OFFSET * 2)
 image = Surface(PIXEL_SIZE)
 clock = pygame.time.Clock()
 
-squares = pygame.image.load("data/squares.png").convert()
+squares = pygame.image.load(os.path.join("data", "squares.png")).convert()
 rect = Rect((0, 0), (TILE, TILE))
 images = []
 for y in range(4):
         images.append([squares.subsurface(rect.move(TILE * x, TILE * y)) for x in range(4)])
 
-font = pygame.font.Font("data/font.ttf", 8)
+font = pygame.font.Font(os.path.join("data", "font.ttf"), 8)
 
 field = Field(WIDTH, HEIGHT)
 
